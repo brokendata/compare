@@ -1,11 +1,17 @@
 package com.brokendata.websites
+import org.jsoup.nodes.Document
 
-/**
- * Created by ryan on 1/23/15.
- */
-object Google {
+class Google (val query: String, val html: Document)
 
-  def search(q: String): String = {
+object Google extends Website {
+  def apply(query: String) = {
+    val formatedQuery = formatQuery(query)
+    val html = downloadHTML(formatedQuery)
+
+    new Google(formatedQuery, html)
+  }
+
+  def formatQuery(q: String): String = {
     "https://www.google.com/search?tbm=shop&q=" + q.replace(" ","+")
   }
 

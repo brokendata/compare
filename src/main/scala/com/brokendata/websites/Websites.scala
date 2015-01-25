@@ -1,9 +1,10 @@
-/*package com.brokendata.scrapers
+package com.brokendata.websites
+
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
-object GoogleShoppingScraper extends Scraper {
 
+trait Website {
   def downloadHTML(url: String): Document = {
     val Doc = Jsoup.connect(url)
       .userAgent("Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36")
@@ -11,14 +12,4 @@ object GoogleShoppingScraper extends Scraper {
 
     Doc
   }
-
-  def downloadPrices(url: String): String = {
-    val Doc = downloadHTML(url)
-    val Element = Doc.select("#rso li._Ked ol li div._tyb")
-
-    Element.text()
-  }
-
 }
-
-*/
