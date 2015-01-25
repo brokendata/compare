@@ -9,3 +9,7 @@ object Example extends App{
 
 
 }
+
+
+
+x.split("\\s\\$").map(x => x.replace("$","").split("from").map(_.trim()))
