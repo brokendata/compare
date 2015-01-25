@@ -12,12 +12,10 @@ import com.brokendata.websites._
       def scrapePrices(website: Google): String = {
         val element = website.html.select("#rso li._Ked ol li div._tyb")
         val text = element.text()
-          /*
-          .split("\\s\\$")
-          .map(x => x.replace("$","")
-          .split("from")
-          .map(_.trim()))
-          .map(x => (x(1),x(0))) */
+        """\$([\d.]+) from ([^\$]+)""".r.findAllMatchIn(text)
+          .map(m => (m.group(2).trim, m.group(1)))
+          .toArray
+
         text
       }
     }
